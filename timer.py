@@ -66,13 +66,29 @@ def run_timer_session(minute, status):
         ti.sleep(1)
 
 
+# session end bell:
+def ring_bell():
+    for i in range(5):
+        sp.run(["tput","bel"])
+        ti.sleep(1)
+
+
 # program
 def work_break_loop():
-    work_session_length = 0.2
+    work_session_length = 0.1
     break_session_length = get_break_length(0.3, work_session_length)
 
     run_timer_session(work_session_length, "focus time")
+    
+    pause = None
+    while pause is None:
+        sp.call("clear")
+        print("intermission")
+        ring_bell()
+        pause = input("enter any character to start break: ")
+
     run_timer_session(break_session_length, "break time")
 
 
 work_break_loop()
+
