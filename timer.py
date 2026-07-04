@@ -28,7 +28,7 @@ def get_break_length(ratio, session_length):
     break_length = session_length * format_ratio
     return break_length
 
-# run the timer
+# run session timer
 def run_timer_session(minute, status):
 
     # initialize session
@@ -48,19 +48,21 @@ def run_timer_session(minute, status):
 
         time_remaining = session_end_time - now
 
+        # print and update current time
         print("current time: ")
         print(now.time().strftime("%H:%M:%S"))
         print("")
-        now = dt.datetime.now()
 
+        # calculate and print remaining time 
         print(f"{int(time_remaining.total_seconds())} secs left")
         print("")
 
+        # print end time
         print("end time: ")
         print(session_end_time.time().strftime("%H:%M:%S"))
         
         # update current time
-        now = dt.datetime.now()
+        now = get_current_time()
 
         # pause
         ti.sleep(1)
@@ -68,24 +70,17 @@ def run_timer_session(minute, status):
 
 # session end bell:
 def ring_bell():
-    for i in range(5):
+    for i in range(2):
         sp.run(["tput","bel"])
         ti.sleep(1)
 
 
-# program
+# timer loop
 def work_break_loop():
-    work_session_length = 0.1
+    work_session_length = 0.15
     break_session_length = get_break_length(0.3, work_session_length)
 
     run_timer_session(work_session_length, "focus time")
-    
-    pause = None
-    while pause is None:
-        sp.call("clear")
-        print("intermission")
-        ring_bell()
-        pause = input("enter any character to start break: ")
 
     run_timer_session(break_session_length, "break time")
 
