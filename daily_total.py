@@ -4,8 +4,8 @@ import datetime as dt
 class DailyTotal:
     def __init__(self, date, recorded_total, goal_total) -> None:
         self.__date = date
-        self.__recorded_total = recorded_total
-        self.__goal_total = goal_total
+        self.__recorded_total = recorded_total  #float # minutes
+        self.__goal_total = goal_total  # minutes 
 
     # getters
     def get_date(self):
@@ -18,6 +18,8 @@ class DailyTotal:
     # setters
     def set_recorded_total(self, recorded_total):
         self.__recorded_total = recorded_total
+    def increase_recorded_total(self, session_length):
+        self.__recorded_total += session_length
     def set_goal_total(self, goal_total):
         self.__goal_total = goal_total
 
@@ -38,3 +40,4 @@ class DailyTotal:
             return True
         else:
             return False
+

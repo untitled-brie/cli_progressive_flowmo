@@ -68,13 +68,22 @@ def run_timer_session(minute, status):
         ti.sleep(1)
 
 
+def get_user_in(prompt):
+    user_in = input(prompt).strip().lower()
+    return user_in
+
+
+def timedelta_s_to_min(timedelta):
+    secs = timedelta.total_seconds()
+    return secs / 60
+
 # session end bell:
 def ring_bell():
     for i in range(2):
         sp.run(["tput","bel"])
         ti.sleep(1)
 
-
+    
 # timer loop
 def work_break_loop():
     work_session_length = 0.15
@@ -83,7 +92,4 @@ def work_break_loop():
     run_timer_session(work_session_length, "focus time")
 
     run_timer_session(break_session_length, "break time")
-
-
-work_break_loop()
 
