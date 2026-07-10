@@ -27,7 +27,9 @@ def start_flow_session(daily_total_object):  # daily_total object
         daily_total_object.display_info()
 
         if daily_total_object.goal_status() is True:
-            return "daily goal met"
+            return session_length, "daily goal met"
+        
+        return session_length
     
     else:
         return session_length
