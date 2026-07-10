@@ -23,7 +23,7 @@ def session_ends(time_start, session_length):
 
 
 # return break time length
-def get_break_length(ratio, session_length):
+def get_break_length(session_length, ratio=0.3):
     format_ratio = float(ratio)
     break_length = session_length * format_ratio
     return break_length
