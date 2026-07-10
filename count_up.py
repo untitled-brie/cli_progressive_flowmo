@@ -1,5 +1,5 @@
-import time as ti
 from timer_functions import get_current_time, get_user_in, timedelta_s_to_min
+from daily_total import DailyTotal
 
 # start count up and return session length upon ending
 def count_up():
@@ -19,7 +19,15 @@ def count_up():
             return "session cancelled"
 
 
-print(count_up())
+def start_flow_session(daily_total_object):  # daily_total object
+    session_length = count_up()
 
+    if session_length != "session cancelled":
+        daily_total_object.increase_recorded_total(session_length)
+        daily_total_object.display_info()
 
-
+        if daily_total_object.goal_status() is True:
+            return "daily goal met"
+    
+    else:
+        return session_length
