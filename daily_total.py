@@ -29,7 +29,7 @@ class DailyTotal:
 
     # methods
     def display_info(self):
-        print(self.__date, self.__recorded_total, self.__goal_total)
+        print(self.__date, self.__recorded_total, self.__goal_total, self.__met_goal)
 
     # get goal status (true=met, false=unmet)
     def goal_status(self):
