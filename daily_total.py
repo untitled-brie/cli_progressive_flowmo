@@ -46,4 +46,8 @@ class DailyTotal:
             return True
         else:
             return False
-
+        
+    # increment and return new goal
+    def increase_goal(self):
+        new_goal = self.__goal_total * 1.0125
+        return new_goal

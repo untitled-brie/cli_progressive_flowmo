@@ -18,7 +18,7 @@ def read_recent_daily_to_object():
     with open(IO_totals_file, "r") as f:
         last_session = f.readline()
 
-        if last_session == "":
+        if last_session == "":  # if file is empty
             init_first_session()
             last_session = f.readline()
 
