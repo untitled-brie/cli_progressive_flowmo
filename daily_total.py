@@ -15,6 +15,8 @@ class DailyTotal:
         return self.__recorded_total
     def get_goal_total(self):
         return self.__goal_total
+    def get_met_goal(self):
+        return self.__met_goal
 
     # setters
     def set_recorded_total(self, recorded_total):

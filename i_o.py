@@ -35,3 +35,14 @@ def read_recent_daily_to_object():
 
         recent_daily_object = DailyTotal(date, recorded_total, goal_total, met_goal)
         return recent_daily_object
+    
+
+def write_daily_object_to_file(daily_object:DailyTotal):
+    with open(IO_totals_file, "w") as f:
+        date = daily_object.get_date()
+        recorded_total = daily_object.get_recorded_total()
+        goal_total = daily_object.get_goal_total()
+        met_goal = daily_object.get_met_goal()
+
+        line = f"{date},{recorded_total},{goal_total},{met_goal}"
+        f.write(line)
