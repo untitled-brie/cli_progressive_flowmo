@@ -8,6 +8,9 @@ def get_current_time():
     now = dt.datetime.now()
     return now
 
+def get_current_date():
+    date = dt.date.today()
+    return date
 
 # set session length
 def set_session_length(minute_in):

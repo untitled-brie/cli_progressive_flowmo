@@ -2,10 +2,11 @@ import datetime as dt
 
 # class to record daily totals across days and sessions
 class DailyTotal:
-    def __init__(self, date, recorded_total, goal_total) -> None:
+    def __init__(self, date, recorded_total, goal_total, met_goal=False) -> None:
         self.__date = date
         self.__recorded_total = recorded_total  #float # minutes
         self.__goal_total = goal_total  # minutes 
+        self.__met_goal = met_goal
 
     # getters
     def get_date(self):
@@ -22,6 +23,9 @@ class DailyTotal:
         self.__recorded_total += session_length
     def set_goal_total(self, goal_total):
         self.__goal_total = goal_total
+    
+    def met_goal(self):
+        self.__met_goal = True
 
     # methods
     def display_info(self):

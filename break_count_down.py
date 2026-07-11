@@ -19,4 +19,5 @@ def break_count_down(flow_ses_length):      # minutes
         now = get_current_time()
         ti.sleep(0.1)
 
+    ring_bell()
     return "break over"
