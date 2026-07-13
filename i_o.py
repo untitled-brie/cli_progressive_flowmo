@@ -7,7 +7,7 @@ IO_totals_file = "totals.csv"
 def init_first_session():
     date = get_current_date()
     recorded_total = 0.0
-    goal_total = 60.0
+    goal_total = 240.0
     met_goal = False
     line = f"{date},{recorded_total},{goal_total},{met_goal}"
     with open(IO_totals_file, "w") as f:

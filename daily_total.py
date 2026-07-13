@@ -36,7 +36,14 @@ class DailyTotal:
             self.__met_goal = True
             return True
         else:
+            self.__met_goal = False
             return False 
+        
+    # calculate progress in percentages
+    def calculate_progress(self):
+        progress = (self.__recorded_total / self.__goal_total) * 100
+        rounded_prog = int(progress)
+        return f"Goal progress: {rounded_prog}% of {self.__goal_total})"
         
     # check if the DailyTotal is today (true=yes, false=no)
     def is_today(self):

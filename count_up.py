@@ -6,6 +6,7 @@ def count_up():
     start_time = get_current_time()
 
     while True:
+        print("flow session in progress!")
         end_input = get_user_in("[end] or [cancel] to stop flow: ")
         options = ["end", "cancel"]
 
@@ -19,12 +20,12 @@ def count_up():
             return "session cancelled"
 
 
-def start_flow_session(daily_total_object):  # daily_total object
+def start_flow_session(daily_total_object:DailyTotal):  # daily_total object
     session_length = count_up()
 
     if session_length != "session cancelled":
         daily_total_object.increase_recorded_total(session_length)
-        return session_length
+        return daily_total_object, session_length
     
     else:
-        return session_length   # session cancelled
+        return None  # session cancelled

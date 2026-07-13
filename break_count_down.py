@@ -5,6 +5,7 @@ from count_up import *
 
 
 def break_count_down(flow_ses_length):      # minutes
+    print("break time!")
     # time stamp at break start
     start_break_time  = get_current_time()   # dt
     # timedelta (break length), float
@@ -20,4 +21,3 @@ def break_count_down(flow_ses_length):      # minutes
         ti.sleep(0.1)
 
     ring_bell()
-    return "break over"
