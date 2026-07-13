@@ -42,15 +42,23 @@ def process_recent_daily_object(recent_daily_object:DailyTotal):
 
     if is_today:
         return recent_daily_object
-    else:   # if object is not today
+    else:   # if object is not today, init and return today's object
         goal_met = recent_daily_object.goal_status()
+        date = get_current_date()
+        recorded_total = 0.0
+        met_goal = False
+
         if goal_met:
             today_goal = recent_daily_object.increase_goal()
-            return today_goal
+
+            today_object = DailyTotal(date, recorded_total, today_goal, met_goal)
+            return today_object
         else:
-            today_goal = recent_daily_object.get_goal_total()
-            return today_goal
-    
+            today_goal_no_progress = recent_daily_object.get_goal_total()
+
+            today_object = DailyTotal(date, recorded_total, today_goal_no_progress, met_goal)
+            return today_object
+
 
 def write_daily_object_to_file(daily_object:DailyTotal):
     with open(IO_totals_file, "w") as f:
