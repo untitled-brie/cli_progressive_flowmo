@@ -37,6 +37,21 @@ def read_recent_daily_to_object():
         return recent_daily_object
     
 
+def process_recent_daily_object(recent_daily_object:DailyTotal):
+    is_today = recent_daily_object.is_today()
+
+    if is_today:
+        return recent_daily_object
+    else:   # if object is not today
+        goal_met = recent_daily_object.goal_status()
+        if goal_met:
+            today_goal = recent_daily_object.increase_goal()
+            return today_goal
+        else:
+            today_goal = recent_daily_object.get_goal_total()
+            return today_goal
+    
+
 def write_daily_object_to_file(daily_object:DailyTotal):
     with open(IO_totals_file, "w") as f:
         date = daily_object.get_date()
