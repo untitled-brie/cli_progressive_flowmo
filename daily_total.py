@@ -25,9 +25,6 @@ class DailyTotal:
         self.__recorded_total += session_length
     def set_goal_total(self, goal_total):
         self.__goal_total = goal_total
-    
-    def met_goal(self):
-        self.__met_goal = True
 
     # methods
     def display_info(self):
@@ -36,6 +33,7 @@ class DailyTotal:
     # get goal status (true=met, false=unmet)
     def goal_status(self):
         if self.__recorded_total >= self.__goal_total:
+            self.__met_goal = True
             return True
         else:
             return False 

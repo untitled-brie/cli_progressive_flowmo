@@ -43,7 +43,10 @@ def process_recent_daily_object(recent_daily_object:DailyTotal):
     if is_today:
         return recent_daily_object
     else:   # if object is not today, init and return today's object
-        goal_met = recent_daily_object.goal_status()
+        goal_met = recent_daily_object.goal_status()   
+        # get the goal status of last session
+
+        #attributes for today
         date = get_current_date()
         recorded_total = 0.0
         met_goal = False
@@ -58,6 +61,14 @@ def process_recent_daily_object(recent_daily_object:DailyTotal):
 
             today_object = DailyTotal(date, recorded_total, today_goal_no_progress, met_goal)
             return today_object
+        
+
+def start_up_read():
+    most_recent_daily_total = read_recent_daily_to_object()
+    processed_daily_object = process_recent_daily_object(most_recent_daily_total)
+
+    goal_status = processed_daily_object.goal_status()
+    return processed_daily_object, goal_status
 
 
 def write_daily_object_to_file(daily_object:DailyTotal):

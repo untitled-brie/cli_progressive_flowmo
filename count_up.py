@@ -24,12 +24,7 @@ def start_flow_session(daily_total_object):  # daily_total object
 
     if session_length != "session cancelled":
         daily_total_object.increase_recorded_total(session_length)
-        daily_total_object.display_info()
-
-        if daily_total_object.goal_status() is True:
-            return session_length, "daily goal met"
-        
         return session_length
     
     else:
-        return session_length
+        return session_length   # session cancelled
