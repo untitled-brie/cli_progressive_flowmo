@@ -53,6 +53,7 @@ def main():
             if flow_session_status is None:
                 continue
             else:
+                clear_UI()
                 write_daily_object_to_file(flow_session_status[0])
                 draw_break_menu("pre_break")
                 choice = get_user_in(">>> ")
